@@ -33,6 +33,23 @@ def load_env_file(env_path):
 load_env_file(BASE_DIR / '.env')
 
 
+def parse_bool(value, default=False):
+    if value is None:
+        return default
+    return str(value).strip().lower() in {"1", "true", "yes", "on"}
+
+
+def mysql_options_from_env():
+    options = {}
+    ssl_ca = os.getenv("DB_SSL_CA")
+    if ssl_ca:
+        options["ssl"] = {
+            "ca": ssl_ca,
+            "check_hostname": parse_bool(os.getenv("DB_SSL_VERIFY_CERT"), True),
+        }
+    return options
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -43,7 +60,7 @@ if not SECRET_KEY:
     raise ValueError("SECRET_KEY is missing. Set it in the .env file.")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = [
 #     "djangoprojects.prabhatanvik.shop",
@@ -130,6 +147,7 @@ DATABASES = {
         "PASSWORD": os.getenv("DB_PASSWORD", ""),
         "HOST": os.getenv("DB_HOST", "127.0.0.1"),
         "PORT": os.getenv("DB_PORT", "3306"),
+        "OPTIONS": mysql_options_from_env(),
     }
 }
 
