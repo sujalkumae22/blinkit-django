@@ -56,5 +56,14 @@ This document provides a professional step-by-step guide for hosting the **Quick
 
 ---
 
+# Stop / Start Django (Gunicorn)
+
+# If running with Gunicorn:
+
+# Stop
+# sudo systemctl stop gunicorn
+# Start
+# sudo systemctl start gunicorn
+
 _Created on: $(date)_
 EOF
