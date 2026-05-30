@@ -67,7 +67,11 @@ DEBUG = parse_bool(os.getenv("DEBUG"), True)
 #     "localhost",
 #     "127.0.0.1",
 # ]
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "sujalblinkitapp-bzcjbgdkftg0eqfv.eastasia-01.azurewebsites.net",
+    "localhost",
+    "127.0.0.1",
+]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 USE_X_FORWARDED_HOST = True
 # Application definition
