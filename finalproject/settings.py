@@ -68,7 +68,7 @@ DEBUG = parse_bool(os.getenv("DEBUG"), True)
 #     "127.0.0.1",
 # ]
 ALLOWED_HOSTS = [
-    "sujalblinkitapp-bzcjbgdkftg0eqfv.eastasia-01.azurewebsites.net",
+    "sujalblinkitapp-bzcjbqdkftg0eqfv.eastasia-01.azurewebsites.net",
     "localhost",
     "127.0.0.1",
 ]
